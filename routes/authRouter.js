@@ -18,7 +18,7 @@ authRouter.post('/signup', (req, res, next) => {
         }
         //Create user
         const newUser = new User(req.body)
-        newUser.save(err, savedUser) => {
+        newUser.save((err, savedUser) => {
             if(err) {
                 res.status(500)
                 return next(err)
@@ -26,7 +26,7 @@ authRouter.post('/signup', (req, res, next) => {
             //Create token
             const token = jwt.sign(savedUser.withoutPassword(), process.env.SECRET)
             return res.status(201).send({user: savedUser.withoutPassword(), token})
-        }
+        })
     })
 })
 

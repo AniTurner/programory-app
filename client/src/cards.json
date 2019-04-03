@@ -1,0 +1,87 @@
+{
+    "js": [
+        {
+            "question": "DOM",
+            "answerID": 1
+        },
+        {
+            "answer": "Document Object Model",
+            "answerID": 1
+        },
+        {
+            "question": "Array",
+            "answerID": 2
+        },
+        {
+            "answer": "[1,2,3,4,5]",
+            "answerID": 2
+        },
+        {
+            "question": "String",
+            "answerID": 3
+        },
+        {
+            "answer": "'Hello World'",
+            "answerID": 3
+        },
+        {
+            "question": "Boolean",
+            "answerID": 4
+        },
+        {
+            "answer": "True / False",
+            "answerID": 4
+        },
+        {
+            "question": "console",
+            "answerID": 5
+        },
+        {
+            "answer": "developer tool; errors and warnings that occur on a web page ",
+            "answerID": 5
+        },
+        {
+            "question": "Loop",
+            "answerID": 6
+        },
+        {
+            "answer": "execute a block of code a number of times",
+            "answerID": 6
+        }
+       
+    ],
+    "react": [
+        {
+            "question": "React is",
+            "answerID": 7
+        },
+        {
+            "answer": "a library",
+            "answerID": 7
+        },
+        {
+            "question": "What is the virtual DOM?",
+            "answerID": 8
+        },
+        {
+            "answer": "a lightweight JavaScript object which originally is just the copy of the real DOM",
+            "answerID": 8
+        },
+        {
+            "question": "Who is the author of React?",
+            "answerID": 9
+        },
+        {
+            "answer": "Facebook",
+            "answerID": 9
+        },
+        {
+            "question": "What is a state?",
+            "answerID": 10
+        },
+        {
+            "answer": "the objects which determine components rendering and behavior",
+            "answerID": 10
+        }
+    ]
+}
