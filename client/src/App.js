@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import {Switch, Route, withRouter, Redirect} from 'react-router-dom'
+import DecksDisplay from './components/DecksDisplay.js'
+import Game from './components/Game.js'
 import {withData} from './context/DataProvider.js'
 import ProtectedRoute from './components/ProtectedRoute'
 

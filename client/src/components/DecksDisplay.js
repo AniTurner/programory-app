@@ -1,5 +1,6 @@
 import React from 'react'
 import { withGame} from "../context/GameProvider.js"
+import Deck from './component/Deck.js'
 
 
 const DecksDisplay = (props) => {
