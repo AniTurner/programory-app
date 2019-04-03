@@ -5,9 +5,9 @@ import { withGame} from "../context/GameProvider.js"
 const DecksDisplay = (props) => {
     return (
         <div>
-            <Deck deckType={"react"} selectADeck={props.selectADeck}/>
+            <Deck deckType={"react"} selectADeck={props.selectADeck}/>  //will route to /game
             <Deck deckType={"js"} selectADeck={props.selectADeck}/>
-            <Deck deckType={"css"} selectADeck={props.selectADeck}/>
+            {/* <Deck deckType={"css"} selectADeck={props.selectADeck}/> */} //need to create a css option
         </div>
     )
 }

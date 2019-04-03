@@ -18,6 +18,11 @@ class GameProvider extends Component {
                 currentDeck: react
             }, () => this.props.history.push('/game'))
         }
+        if(deckName === 'js') {
+            this.setState({
+                currentDeck: js
+            }, () => this.props.history.push('/game'))
+        }
     }
 
     
