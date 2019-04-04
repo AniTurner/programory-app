@@ -22,6 +22,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/programor
 app.use("/auth", require("./routes/authRouter.js"))
 // Make the app use the express-jwt authentication middleware on anything starting with "/api"
 app.use("/api", expressJwt({secret: process.env.SECRET}));
+app.use('/api/user', require('./routes/userRoutes.js'))
 
 
 //Global Error Handler

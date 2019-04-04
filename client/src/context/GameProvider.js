@@ -7,21 +7,40 @@ class GameProvider extends Component {
     constructor(){
         super()
         this.state = {
-           currentDeck: []
+           currentDeck: [],
+           playerSelectDeck: '',
+           deckToPlay: []
 
         }
     }
 
-    selectADeck = deckName => {
+    getDeck = () => {
+        if(this.state.playerSelectDeck === 'react') {
+            this.setState({
+                deckToPlay: this.state.currentDeck.react
+            })
+        }
+        if(this.state.playerSelectDeck === 'js') {
+            this.setState({
+                deckToPlay: this.state.currentDeck.js
+            })
+        }
+    }
+
+    
+    selectADeck = (username, deckName, history) => {
+        console.log(history)
         if(deckName === 'react') {
             this.setState({
+                playerSelectDeck: "react",
                 currentDeck: react
-            }, () => this.props.history.push('/game'))
+            }, () => history.push(`/${username}/game`))
         }
         if(deckName === 'js') {
             this.setState({
+                playerSelectDeck: "js",
                 currentDeck: js
-            }, () => this.props.history.push('/game'))
+            }, () => history.push(`/${username}/game`))
         }
     }
 
@@ -32,7 +51,8 @@ class GameProvider extends Component {
             <GameContext.Provider
                 value={{
                     ...this.state,
-                    selectADeck: this.selectADeck
+                    selectADeck: this.selectADeck,
+                    getDeck: this.getDeck
                 }}>
                 {this.props.children}
             </GameContext.Provider>

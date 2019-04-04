@@ -1,14 +1,14 @@
 import React from 'react'
+import {withGame} from '../context/GameProvider.js'
+import {withData} from '../context/DataProvider.js'
 
 const Deck = props => {
+    console.log(props)
     return (
-        <div>
-            <div>Choose one of the topics below:</div>
-            <div onClick={() => props.selectADeck(props.deckType)}>Javascript</div>
-            <div onClick={() => props.selectADeck(props.deckType)}>React</div>
+        <div style={{color: 'white'}}>
+            <div onClick={() => props.selectADeck(props.username, props.deckType, props.history)}>{props.deckType}</div>
         </div>
-
     )
 }
 
-export default Deck
+export default withGame(withData(Deck))

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withData } from '../context/DataProvider.js'
 import { TimelineLite } from 'gsap'
+import axios from 'axios'
 // import '../styles-admin.css'
 
 
@@ -10,7 +11,8 @@ class UserInfo extends Component {
         this.state = {
             username: props.user.username,
             nickname: props.user.nickname,
-            imgUrl: props.user.imgUrl,
+            userImg: props.user.userImg,
+            selectedFile: null
         }
 
         this.modalElement = null
@@ -39,36 +41,66 @@ class UserInfo extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
+        const {username, nickname, userImg} = this.state
         const userUpdate = {
-            username: this.state.username,
-            nickname: this.state.nickname,
-            imgUrl: this.state.imgUrl,
+            username,
+            nickname,
+            userImg,
         }
 
         this.props.updateUser(this.props.user._id , userUpdate)
         console.log('hi')
 
     }
+
+    fileSelectedHandler = e => {
+        this.setState({
+            selectedFile: e.target.files[0]
+        })
+    }
+
+    fileUploadHandler = () => {
+        const fd = new FormData()
+        fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
+        axios.put('/api/user', fd,{headers: {Authorization: `Bearer ${localStorage.token}`}}, {
+            onUploadProgress: progressEvent => {
+                console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%' )
+            }
+        })
+            .then(res => {
+            console.log(res)
+        })
+    }
     render() {
         console.log(this.props.user)
+        const {username, userImg, nickname} = this.state
         return (
             <main>
                 <div>
 
                     <h2>User Information</h2>
                     <hr />
-                    <h1>{`${this.state.username}`}</h1>
+                    <h1>{`${username}`}</h1>
 
                     <form onSubmit={this.handleSubmit}>
                         <div>
-                            <img src={this.state.imgUrl ? this.state.imgUrl : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROJlZBm6kPxbsgHqvL2GNBMrLY_Ns4mhJFiOa4L1Sgkz1u-J2gtg"} alt={this.state.username} />
-                            <input type="text" name="imgUrl" value={this.state.imgUrl} placeholder="Profile Image URL" onChange={this.handleChange} />
+                            <img style={{width: 250, height: 250}}src={userImg ? userImg : "http://4.bp.blogspot.com/-5ijT9UQtWTQ/T3B-jJpkoII/AAAAAAAABAg/ylbNzWxASXA/s1600/brain+sketch_69563776.jpg"} alt={username} />
+                            <input 
+                                style={{display: 'none'}}
+                                type="file" 
+                                name="userImg" 
+                                value={userImg} 
+                                placeholder="Profile Image URL" 
+                                onChange={this.fileSelectedHandler}
+                                ref={fileInput => this.fileInput = fileInput} />
+                            <button onClick={() => this.fileInput.click()}>Pick File</button>
+                            <button onClick={this.fileUploadHandler}>Upload</button>
                         </div>
                         <div>
                             {/* <label>User Name:</label> */}
-                            <input type="text" name="username" value={this.state.username} placeholder="Username" onChange={this.handleChange} disabled />
+                            <input type="text" name="username" value={username} placeholder="Username" onChange={this.handleChange} disabled />
                             {/* <label>First Name:</label> */}
-                            <input type="text" name="nickname" value={this.state.nickname ? this.state.nickname : ""} placeholder="Nickname" onChange={this.handleChange} />
+                            <input type="text" name="nickname" value={nickname ? nickname : ""} placeholder="Nickname" onChange={this.handleChange} />
                             
                         </div>
                         <div>

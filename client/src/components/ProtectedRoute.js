@@ -5,7 +5,7 @@ import { withData } from "../context/DataProvider.js"
 const ProtectedRoute = (props) => {
     //set state user: _id
     const { component: Component, ...rest } = props;
-    console.log(rest)
+    // console.log(rest)
     return (
         props.token ?
             <Route {...rest} component={Component} /> :

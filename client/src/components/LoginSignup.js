@@ -9,7 +9,6 @@ class LoginSignup extends Component {
             userChoice: 'login'
         }
         localStorage.setItem('isLoggedIn', "false")
-        // localStorage.setItem('isPreview', "false")
     }
 
     setUserChoice = (str) => {
@@ -23,7 +22,6 @@ class LoginSignup extends Component {
             <div>
                 <div>
                 <div>
-                    <h1>Programory</h1>
                     <span><button className="tab" onClick={() => this.setUserChoice('login')}>Login</button></span>
                     <span><button className="tab" onClick={() => this.setUserChoice('signup')}>Sign Up</button></span>
                     {/* DISPLAY DIV ONLY IF USERS EXIST */}

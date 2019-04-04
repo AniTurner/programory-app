@@ -17,7 +17,8 @@ class DataProvider extends Component {
         this.state = {
             user: JSON.parse(localStorage.getItem("user")) || {},
             token: localStorage.getItem("token") || "",
-
+            newUsername: '',
+            allUsers: []
         }
     }
 
@@ -48,6 +49,44 @@ class DataProvider extends Component {
         })
     }
 
+    //get all users
+    getUsers = () => {
+        dataAxios.get('/api/user').then(res => {
+            this.setState({
+                allUsers: res.data
+            })
+        })
+    }
+
+    //get user
+    getUser = (_id) => {
+        dataAxios.get('/api/user' + _id).then(res => {
+            this.setState({
+                currentUser: res.data
+            })
+        })
+    }
+
+    addUser = (newUsername) => {
+        dataAxios.post('/api/user' , newUsername).then(res => {
+            this.setState(prevState => ({
+                allUsers: [...prevState.allUsers, res.data]
+            }))
+        })
+    }
+    // update user
+    updateUser = (_id, updates) => {
+        console.log(updates)
+        dataAxios.put(`/api/user/${_id}`, updates).then(response => {
+            localStorage.user = JSON.stringify(response.data)
+            this.setState(prevState => ({
+                user:{
+                    ...prevState.user,
+                }
+            }))
+        })
+    }
+
     logout = () => {
         localStorage.removeItem('user')
         localStorage.removeItem('token')
@@ -64,11 +103,17 @@ class DataProvider extends Component {
         return (
             <DataContext.Provider
                 value={{
-                    user: this.state.user,
-                    token: this.state.token,
+                    ...this.state,
                     signup: this.signup,
                     login: this.login,
-                    logout: this.logout
+                    logout: this.logout,
+                    getUser: this.getUser,
+                    getUsers: this.getUsers,
+                    getCategories: this.getCategories,
+                    addUser: this.addUser,
+                    newUsername: this.state.newUsername,
+                    allUsers: this.state.allUsers,
+                    updateUser: this.updateUser
                 }}>
                 {this.props.children}
             </DataContext.Provider>
