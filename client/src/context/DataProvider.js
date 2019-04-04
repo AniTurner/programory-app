@@ -75,14 +75,12 @@ class DataProvider extends Component {
         })
     }
     // update user
-    updateUser = (_id, updates) => {
+    updateUser = (updates) => {
         console.log(updates)
-        dataAxios.put(`/api/user/${_id}`, updates).then(response => {
-            localStorage.user = JSON.stringify(response.data)
+        dataAxios.put(`/api/user`, updates).then(res => {
+            localStorage.user = JSON.stringify(res.data)
             this.setState(prevState => ({
-                user:{
-                    ...prevState.user,
-                }
+                user: res.data
             }))
         })
     }

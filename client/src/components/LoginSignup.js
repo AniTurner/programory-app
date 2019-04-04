@@ -6,7 +6,8 @@ class LoginSignup extends Component {
     constructor() {
         super() 
         this.state = {
-            userChoice: 'login'
+            userChoice: 'login',
+            authToggle: false
         }
         localStorage.setItem('isLoggedIn', "false")
     }
@@ -16,6 +17,13 @@ class LoginSignup extends Component {
             userChoice: str
         })
     }
+
+    toggler = () => {
+        this.setState(prevState => ({
+            authToggle: !prevState.authToggle
+        }))
+    }
+
     render() {
        
         return (
@@ -25,7 +33,8 @@ class LoginSignup extends Component {
                     <span><button className="tab" onClick={() => this.setUserChoice('login')}>Login</button></span>
                     <span><button className="tab" onClick={() => this.setUserChoice('signup')}>Sign Up</button></span>
                     {/* DISPLAY DIV ONLY IF USERS EXIST */}
-                    {(this.state.userChoice === 'signup') 
+                    {/* {(this.state.userChoice === 'signup')  */}
+                    {this.state.authToggle
                     ?
                     <div>
                         <Signup />

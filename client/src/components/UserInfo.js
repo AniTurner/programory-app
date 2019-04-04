@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { withData } from '../context/DataProvider.js'
 import { TimelineLite } from 'gsap'
-import axios from 'axios'
+import {storage} from '../firebase'
 // import '../styles-admin.css'
 
 
@@ -11,8 +11,9 @@ class UserInfo extends Component {
         this.state = {
             username: props.user.username,
             nickname: props.user.nickname,
-            userImg: props.user.userImg,
-            selectedFile: null
+            image: null,
+            userImg: '',
+            progress: 0
         }
 
         this.modalElement = null
@@ -34,9 +35,13 @@ class UserInfo extends Component {
     }
 
     handleChange = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+        if(e.target.files[0]) {
+            const image = e.target.files[0]
+            this.setState(() => ({image}))
+        }
+        // this.setState({
+        //     [e.target.name]: e.target.value
+        // })
     }
 
     handleSubmit = e => {
@@ -52,27 +57,34 @@ class UserInfo extends Component {
         console.log('hi')
 
     }
-
-    fileSelectedHandler = e => {
-        this.setState({
-            selectedFile: e.target.files[0]
+    handleUpload = () => {
+        const {image} = this.state
+        const uploadTask = storage.ref(`images/${image.name}`).put(image)
+        uploadTask.on('state_changed',(snapshot) => {
+            const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100)
+            this.setState({progress})
+        }, (error) => {
+            console.log(error)
+        }, () => {
+            storage.ref('images').child(image.name).getDownloadURL().then(url => {
+                const updates = { userImg: url}
+                this.props.updateUser(updates)
+                console.log(url)
+                // this.setState({url})
+            })
         })
     }
 
-    fileUploadHandler = () => {
-        const fd = new FormData()
-        fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
-        axios.put('/api/user', fd,{headers: {Authorization: `Bearer ${localStorage.token}`}}, {
-            onUploadProgress: progressEvent => {
-                console.log('Upload Progress: ' + Math.round(progressEvent.loaded / progressEvent.total * 100) + '%' )
-            }
-        })
-            .then(res => {
-            console.log(res)
-        })
-    }
     render() {
+
         console.log(this.props.user)
+        const style = {
+            height: '100vh',
+            display: 'fex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center'
+        }
         const {username, userImg, nickname} = this.state
         return (
             <main>
@@ -80,21 +92,26 @@ class UserInfo extends Component {
 
                     <h2>User Information</h2>
                     <hr />
-                    <h1>{`${username}`}</h1>
+                    <h1>Hi {`${username}`}</h1>
 
                     <form onSubmit={this.handleSubmit}>
                         <div>
-                            <img style={{width: 250, height: 250}}src={userImg ? userImg : "http://4.bp.blogspot.com/-5ijT9UQtWTQ/T3B-jJpkoII/AAAAAAAABAg/ylbNzWxASXA/s1600/brain+sketch_69563776.jpg"} alt={username} />
+                
+                            {/* <img style={{width: 250, height: 250}}src={userImg ? userImg : "http://4.bp.blogspot.com/-5ijT9UQtWTQ/T3B-jJpkoII/AAAAAAAABAg/ylbNzWxASXA/s1600/brain+sketch_69563776.jpg"} alt={username} /> */}
+                            <progress value={this.state.progress} max="100" />
+                            <br/>
                             <input 
-                                style={{display: 'none'}}
+                                style={{style}}
                                 type="file" 
                                 name="userImg" 
                                 value={userImg} 
                                 placeholder="Profile Image URL" 
-                                onChange={this.fileSelectedHandler}
+                                onChange={this.handleChange}
                                 ref={fileInput => this.fileInput = fileInput} />
-                            <button onClick={() => this.fileInput.click()}>Pick File</button>
-                            <button onClick={this.fileUploadHandler}>Upload</button>
+                            {/* <button onClick={() => this.fileInput.click()}>Pick File</button> */}
+                            <button onClick={this.handleUpload}>Upload</button>
+                            <br/>
+                            <img src={this.props.user.userImg || 'http://via.placeholder.com/400x300'} alt='Uploaded image' height='300' width='400' />
                         </div>
                         <div>
                             {/* <label>User Name:</label> */}

@@ -60,20 +60,20 @@ userRouter.delete('/:_id', (req, res) => {
 })
 
 //PUT
-userRouter.put('/:_id', (req, res) => {
-    console.log(req.body)
-    User.findOneAndUpdate(
-        {_id: req.params._id},
-        req.body,
-        {new: true},
-        (err, updatedUser) => {
-            if(err) {
-                res.status(500)
-                return res.send(err)
-            }
-            return res.status(201).send(updatedUser)
-        }
-    )
-})
+// userRouter.put('/:_id', (req, res) => {
+//     console.log(req.body)
+//     User.findOneAndUpdate(
+//         {_id: req.params._id},
+//         req.body,
+//         {new: true},
+//         (err, updatedUser) => {
+//             if(err) {
+//                 res.status(500)
+//                 return res.send(err)
+//             }
+//             return res.status(201).send(updatedUser)
+//         }
+//     )
+// })
 
 module.exports = userRouter

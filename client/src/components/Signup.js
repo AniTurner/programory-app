@@ -8,6 +8,7 @@ class Signup extends Component {
             username: '',
             password: '',
             nickname: "",
+            authToggle: false,
             errorMessage: ""
 
         }
@@ -35,6 +36,11 @@ class Signup extends Component {
                 this.setState({ errorMessage: err.response.data.errMsg })
             })
 
+    }
+    toggler = () => {
+        this.setState(prevState => ({
+            authToggle: !prevState.authToggle
+        }))
     }
 
     render() {
@@ -70,6 +76,8 @@ class Signup extends Component {
                 <button>Signup</button>
                 
                 {this.state.errorMessage && <p style={{ color: "red" }}>{this.state.errorMessage}</p>}
+                <p onClick={this.toggler}>Already have an account? Login</p>
+
 
             </form>
 

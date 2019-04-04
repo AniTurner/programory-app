@@ -17,6 +17,7 @@ class Login extends Component {
         this.setState({
             username: "",
             password: "",
+            authToggle: false,
             errorMessage: ""
         })
     }
@@ -33,7 +34,13 @@ class Login extends Component {
         // .catch(err => {
         //     this.setState({errorMessage: err.response.data.errMsg})
         // })
-}
+    }
+
+    toggler = () => {
+        this.setState(prevState => ({
+            authToggle: !prevState.authToggle
+        }))
+    }
 
     render(){
         return (
@@ -58,6 +65,8 @@ class Login extends Component {
                     <button>Login</button>
                     
                     {this.state.errorMessage && <p style={{color: "red"}}>{this.state.errorMessage}</p>}
+                    <p onClick={this.toggler}>Don't have an account? Sign Up</p>
+
 
             </form>
 

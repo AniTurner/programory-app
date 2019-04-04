@@ -6,9 +6,6 @@ import {withData} from './context/DataProvider.js'
 import ProtectedRoute from './components/ProtectedRoute'
 
 
-import firebase from 'firebase/app'
-import 'firebase/storage'
-
 import Nav from './components/Nav.js'
 import Footer from './components/Footer.js'
 import Home from './components/Home.js'

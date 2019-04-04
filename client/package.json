@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "firebase": "^5.9.3",
     "gsap": "^2.1.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

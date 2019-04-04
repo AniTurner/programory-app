@@ -1,22 +1,19 @@
-  import firebase from 'firebase/app'
-  import 'firebase/storage'
+import firebase from 'firebase/app';
+import 'firebase/storage';
 
-  
-  
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBtzycXvlM5P9DXOroA9cVXGl0Zg5EJ4N8",
+// Initialize Firebase
+var config = {
+    apiKey: process.env.REACT_APP_APIKEY,
     authDomain: "programory-app.firebaseapp.com",
     databaseURL: "https://programory-app.firebaseio.com",
     projectId: "programory-app",
     storageBucket: "programory-app.appspot.com",
     messagingSenderId: "100727656362"
-  };
-  firebase.initializeApp(config);
+};
+firebase.initializeApp(config);
 
-  const storage = firebase.storage()
-  
+const storage = firebase.storage();
 
-  export {
-      storage, firebase as default
-  }
+export {
+    storage, firebase as default
+}
