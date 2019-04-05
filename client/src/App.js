@@ -26,6 +26,7 @@ class App extends Component {
     
 
     render() {
+        // document.title = this.props.location.pathname.slice(1)[0].toUpperCase() + this.props.location.pathname.slice(2) //make name of tab in browser display the title of the page
         return (
             <article>
             <header>
@@ -34,9 +35,9 @@ class App extends Component {
             <Switch>
                 <Route 
                     exact path='/' 
-                    render={rprops => !this.props.token 
+                    render={rProps => !this.props.token 
                     ? 
-                    <Home {...rprops} /> 
+                    <Home {...rProps} /> 
                     : 
                     <Redirect 
                         to={`/${this.props.user.username}/userinfo`} 

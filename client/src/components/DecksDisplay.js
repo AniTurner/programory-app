@@ -4,7 +4,6 @@ import Deck from '../components/Deck.js'
 
 
 const DecksDisplay = (props) => {
-    console.log(props)
     return (
         <div>
             <div style={{color: 'white'}}>Select a deck</div>

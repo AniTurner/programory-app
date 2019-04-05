@@ -14,13 +14,14 @@ class GameProvider extends Component {
         }
     }
 
-    getDeck = () => {
-        if(this.state.playerSelectDeck === 'react') {
+    getDeck = (deck) => {
+        console.log(deck)
+        if(deck === 'react') {
             this.setState({
                 deckToPlay: this.state.currentDeck.react
             })
         }
-        if(this.state.playerSelectDeck === 'js') {
+        if(deck === 'js') {
             this.setState({
                 deckToPlay: this.state.currentDeck.js
             })
@@ -29,14 +30,15 @@ class GameProvider extends Component {
 
     
     selectADeck = (username, deckName, history) => {
-        console.log(history)
         if(deckName === 'react') {
+            this.getDeck("react")
             this.setState({
                 playerSelectDeck: "react",
                 currentDeck: react
             }, () => history.push(`/${username}/game`))
         }
         if(deckName === 'js') {
+            this.getDeck("js")
             this.setState({
                 playerSelectDeck: "js",
                 currentDeck: js

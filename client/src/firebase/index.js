@@ -7,7 +7,7 @@ import 'firebase/storage';
     authDomain: "programory-app1.firebaseapp.com",
     databaseURL: "https://programory-app1.firebaseio.com",
     projectId: "programory-app1",
-    storageBucket: "",
+    storageBucket: "programory-app1.appspot.com",
     messagingSenderId: "406730369213"
   };
   firebase.initializeApp(config);
