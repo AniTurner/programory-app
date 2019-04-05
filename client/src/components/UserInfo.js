@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { withData } from '../context/DataProvider.js'
 import { TimelineLite } from 'gsap'
 import {storage} from '../firebase'
-// import '../styles-admin.css'
+import '../styles-userinfo.css'
+
 
 
 class UserInfo extends Component {
@@ -39,9 +40,6 @@ class UserInfo extends Component {
             const image = e.target.files[0]
             this.setState(() => ({image}))
         }
-        // this.setState({
-        //     [e.target.name]: e.target.value
-        // })
     }
 
     handleSubmit = e => {
@@ -76,7 +74,7 @@ class UserInfo extends Component {
     }
 
     render() {
-
+        console.log(this.url)
         console.log(this.props.user)
         const style = {
             height: '100vh',
@@ -88,17 +86,16 @@ class UserInfo extends Component {
         const {username, userImg, nickname} = this.state
         return (
             <main>
-                <div>
+                <div id="user-info-edit-screen" className="center-crop">
 
-                    <h2>User Information</h2>
+                    <h2>Me</h2>
                     <hr />
                     <h1>Hi {`${username}`}</h1>
 
-                    <form onSubmit={this.handleSubmit}>
+                    <form id="user-info-form" onSubmit={this.handleSubmit}>
                         <div>
-                
-                            {/* <img style={{width: 250, height: 250}}src={userImg ? userImg : "http://4.bp.blogspot.com/-5ijT9UQtWTQ/T3B-jJpkoII/AAAAAAAABAg/ylbNzWxASXA/s1600/brain+sketch_69563776.jpg"} alt={username} /> */}
-                            <progress value={this.state.progress} max="100" />
+                            <img src={this.props.user.userImg || 'http://via.placeholder.com/400x300'} alt='Uploaded image' height='300' width='400' />
+                            <progress id="progress-bar" value={this.state.progress} max="100" />
                             <br/>
                             <input 
                                 style={{style}}
@@ -108,10 +105,8 @@ class UserInfo extends Component {
                                 placeholder="Profile Image URL" 
                                 onChange={this.handleChange}
                                 ref={fileInput => this.fileInput = fileInput} />
-                            {/* <button onClick={() => this.fileInput.click()}>Pick File</button> */}
-                            <button onClick={this.handleUpload}>Upload</button>
+                            <button id="upload-button" onClick={this.handleUpload}>Upload</button>
                             <br/>
-                            <img src={this.props.user.userImg || 'http://via.placeholder.com/400x300'} alt='Uploaded image' height='300' width='400' />
                         </div>
                         <div>
                             {/* <label>User Name:</label> */}

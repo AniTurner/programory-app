@@ -4,7 +4,6 @@ import LoginSignup from './LoginSignup.js'
 // import { PageFade } from '../transitions/transition.js'
 
 // import './transitionstyles.css'
-import './styles.css'
 
 class Home extends Component {
     constructor(props) {
