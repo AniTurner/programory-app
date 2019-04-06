@@ -5,11 +5,11 @@ import Deck from '../components/Deck.js'
 
 const DecksDisplay = (props) => {
     return (
-        <div>
-            <div style={{color: 'white'}}>Select a deck</div>
-            <Deck deckType={"react"}  history={props.history}/>
+        <div className='deck-container'>
+            <div className="deck-title">Select a deck</div>
+            <Deck  deckType={"react"}  history={props.history}/>
             {/* //will route to /game */}
-            <Deck deckType={"js"} history={props.history}/>
+            <Deck  deckType={"js"} history={props.history}/>
             {/* <Deck deckType={"css"} selectADeck={props.selectADeck}/> //need to create a css option */}
         </div>
     )

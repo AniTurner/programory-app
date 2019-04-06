@@ -8,9 +8,11 @@ class Game extends Component {
         this.state = {
             selectedItem1: '',
             selectedItem2: '',
-            shuffledDeck: []
+            shuffledDeck: [],
+            time: 0,
+            gameStart: false
         }
-        
+        this.clockId = null
     }
 
     componentDidMount(){
@@ -18,6 +20,7 @@ class Game extends Component {
         this.setState({
             shuffledDeck
         })
+       
     }
 
     selectCard = answerID => {
@@ -47,8 +50,17 @@ class Game extends Component {
     matchItems = (answerID) => {
         // console.log('clicked')
         this.setState(prevState => ({
-            shuffledDeck: prevState.shuffledDeck.filter(card => card.answerID !== answerID)
-        }))
+            shuffledDeck: prevState.shuffledDeck.filter(card => card.answerID !== answerID),
+            selectedItem1: '',
+            selectedItem2: ''
+        }), ()=> {
+            if(!this.state.shuffledDeck.length) {
+                clearInterval(this.clockId) //time stops when game over
+                
+                //update user object first
+                //this.props.history.push('/site')
+            }
+        })
         console.log("it's a match")
 
         // this.setState({
@@ -62,7 +74,18 @@ class Game extends Component {
     }
 
     notMatch = () => {
+        this.setState({
+            selectedItem1: '',
+            selectedItem2: ''
+        })
         console.log('not a match')
+    }
+
+    startGame = () => {
+        this.clockId = setInterval(() => this.setState(p => ({ time: p.time + 1})), 1000)
+        this.setState({
+            gameStart: true
+        })
     }
 
     render(){
@@ -80,8 +103,10 @@ class Game extends Component {
         )
     })
     return (
-        <div>
-            {mappedDeck}
+        <div style={{color: "white"}}>
+            {this.state.time}
+            {this.state.gameStart && mappedDeck}
+            {!this.state.gameStart && <button onClick={this.startGame}>Start Game</button>}
         </div>
     )
 }

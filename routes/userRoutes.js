@@ -48,6 +48,17 @@ userRouter.put('/', (req, res, next) => {
 })
 
 
+userRouter.put('/', (req, res, next) => {
+    User.findOneAndUpdate({_id: req.user._id}, req.body, {new: true}, (err, updatedUser) => {
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(201).send(updatedUser)
+    })
+})
+
+
 //Delete one
 userRouter.delete('/:_id', (req, res) => {
     User.findOneAndRemove({_id: req.params._id}, (err, deletedUser) => {

@@ -42,6 +42,12 @@ class UserInfo extends Component {
         }
     }
 
+    handleSaveChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
     handleSubmit = e => {
         e.preventDefault()
         const {username, nickname, userImg} = this.state
@@ -67,53 +73,58 @@ class UserInfo extends Component {
             storage.ref('images').child(image.name).getDownloadURL().then(url => {
                 const updates = { userImg: url}
                 this.props.updateUser(updates)
-                console.log(url)
-                // this.setState({url})
             })
         })
     }
 
     render() {
-        console.log(this.url)
-        console.log(this.props.user)
-        const style = {
-            height: '100vh',
-            display: 'fex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center'
-        }
+        // const style = {
+        //     height: '100vh',
+        //     display: 'fex',
+        //     flexDirection: 'column',
+        //     alignItems: 'center',
+        //     justifyContent: 'center'
+        // }
         const {username, userImg, nickname} = this.state
+
         return (
             <main>
                 <div id="user-info-edit-screen" className="center-crop">
 
-                    <h2>Me</h2>
-                    <hr />
-                    <h1>Hi {`${username}`}</h1>
+                    {/* <h2>Me</h2> */}
+                    {/* <hr /> */}
+                    <h1>Hi {`${nickname}`} !</h1>
 
                     <form id="user-info-form" onSubmit={this.handleSubmit}>
                         <div>
                             <img src={this.props.user.userImg || 'http://via.placeholder.com/400x300'} alt='Uploaded image' height='300' width='400' />
-                            <progress id="progress-bar" value={this.state.progress} max="100" />
+                            {this.state.progress > 99 || this.state.progress == 0
+                            ?
+                            null
+                            :
+                            <progress id="progress-bar" value={this.state.progress} max="100" />}
                             <br/>
-                            <input 
-                                style={{style}}
+                            <label className='custom-file-upload'>Select Image
+                            <input
+                                id="choosefile-button"
+                                size= '160px'
                                 type="file" 
                                 name="userImg" 
                                 value={userImg} 
                                 placeholder="Profile Image URL" 
                                 onChange={this.handleChange}
                                 ref={fileInput => this.fileInput = fileInput} />
+                            </label>
                             <button id="upload-button" onClick={this.handleUpload}>Upload</button>
                             <br/>
                         </div>
                         <div>
-                            {/* <label>User Name:</label> */}
-                            <input type="text" name="username" value={username} placeholder="Username" onChange={this.handleChange} disabled />
-                            {/* <label>First Name:</label> */}
-                            <input type="text" name="nickname" value={nickname ? nickname : ""} placeholder="Nickname" onChange={this.handleChange} />
-                            
+                            <label className='input-label'>Username:<br/>
+                            <input type="text" name="username" value={username} placeholder="Username" onChange={this.handleSaveChange} disabled />
+                            </label>
+                            <label className='input-label'>Nickname:<br/>
+                            <input type="text" name="nickname" value={nickname ? nickname : ""} placeholder="Nickname" onChange={this.handleSaveChange} />
+                            </label>
                         </div>
                         <div>
                             <button>Save</button>

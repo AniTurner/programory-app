@@ -12,6 +12,10 @@ html, body {
     background-size: cover;
 }
 
+body {
+    background-color: #101010;
+}
+
 
 .min-height {
     min-height: 70vh;
@@ -61,10 +65,10 @@ a:hover {
     transform: translateY(-50%);
     transform: translateX(-50%);
     background-color: white;
-    width: 400px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
+    /* width: 400px; */
+    /* height: 100px; */
+    /* display: flex; */
+    /* justify-content: center; */
 }
 
 /* 
@@ -87,7 +91,7 @@ header {
     font-size: 12pt;
     justify-items: center;
     transition: all 0.3s ease;
-    width: 100%
+    /* width: 100% */
 }
 
 
@@ -102,7 +106,7 @@ header {
 #admin-nav li {
     border: 5px solid transparent;
     font-size: 13pt;
-    display: grid;
+    /* display: grid; */
 }
 
 #admin-nav li a {
@@ -153,6 +157,12 @@ header {
     border: 15px solid transparent;
 }
 
+main {
+    position: relative;
+    min-height: 70vh;
+    padding: 15px;
+
+}
 
 /* FOOTER ELEMENTS */
 
@@ -181,11 +191,18 @@ button {
     border: 1px solid silver;
     color: rgb(197, 228, 237);
     font-size: 1em;
+    font-family: 'Special Elite', cursive;
     padding: 10px 10px;
     width: 150px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     font-weight: normal;
     margin-left: 20px;
+}
+
+button:hover {
+    -webkit-box-shadow: 0px 0px 46px -4px rgba(245,240,245,1);
+    -moz-box-shadow: 0px 0px 46px -4px rgba(245,240,245,1);
+    box-shadow: 0px 0px 46px -4px rgba(245,240,245,1);
 }
 
 button:first-of-type {
@@ -217,7 +234,7 @@ button:first-of-type {
     background-position: center;
     transition: all 0.5s ease-in-out;
     text-align: center;
-    background: url("https://source.unsplash.com/collection/2569191/800x600") center no-repeat;
+    /* background: url("https://source.unsplash.com/collection/2569191/800x600") center no-repeat; */
     background-size: cover;
 }
 
@@ -241,7 +258,7 @@ button:first-of-type {
 #login-screen h1 {
     font: bolder 98px 'Montserrat';
     margin: 0;
-    background: url("https://source.unsplash.com/collection/2569191/800x600") center;
+    /* background: url("https://source.unsplash.com/collection/2569191/800x600") center; */
     background-size: contain;
     background-clip: text;
     -webkit-background-clip: text;
@@ -312,11 +329,11 @@ button:first-of-type {
     grid-gap: 20px;
 }
 
-#user-info-form>div {
+/* #user-info-form > div {
     display: grid;
     grid-template-rows: 1fr;
     grid-gap: 20px;
-}
+} */
 
 #user-info-form input {
     width: 335px;
@@ -327,12 +344,55 @@ button:first-of-type {
     display: flex;
 }
 
-#user-info-form button {
-    height: 50px;
-    align-self: flex-end;
+/* #user-info-form button {
+    height: 40px;
+    align-self: center;
+    border-radius: 15px;
+} */
+
+#progress-bar {
+    display: flex;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-left: 80px;
 }
 
-#progress-button {
-    background: ""
+input[type="file"] {
+    display: none;
 }
+
+.custom-file-upload {
+    background-color: rgb(18, 60, 199);
+    border: 1px solid silver;
+    color: rgb(197, 228, 237);
+    font-size: 1em;
+    padding: 10px 10px;
+    width: 150px;
+    font-weight: normal;
+    margin-left: 20px;
+    cursor: pointer;
+    font-family: 'Special Elite', cursive;
+    text-align: center;
+    border-radius: 15px;
+    margin: 10px;
+
+}
+
+.custom-file-upload:hover {
+    -webkit-box-shadow: 0px 0px 46px -4px rgba(245,240,245,1);
+    -moz-box-shadow: 0px 0px 46px -4px rgba(245,240,245,1);
+    box-shadow: 0px 0px 46px -4px rgba(245,240,245,1);
+}
+
+.input-label {
+    color: rgb(197, 228, 237);
+    padding: 10px;
+    font-family: 'Special Elite', cursive;
+    height: 100px;
+    
+}
+
+
+
 

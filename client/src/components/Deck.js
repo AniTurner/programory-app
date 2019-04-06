@@ -4,8 +4,10 @@ import {withData} from '../context/DataProvider.js'
 
 const Deck = props => {
     return (
-        <div style={{color: 'white'}}>
-            <div onClick={() => props.selectADeck(props.user.username, props.deckType, props.history)}>{props.deckType}</div>
+        <div className="deck-option-container" >
+            <div >
+                <div className="deck-options" onClick={() => props.selectADeck(props.user.username, props.deckType, props.history)}>{props.deckType}</div>
+            </div>
         </div>
     )
 }
