@@ -58,19 +58,10 @@ class Game extends Component {
                 clearInterval(this.clockId) //time stops when game over
                 
                 //update user object first
-                //this.props.history.push('/site')
+                //this.props.history.push('/')
             }
         })
         console.log("it's a match")
-
-        // this.setState({
-        //     selectedItem1: id,
-        //     selectedItem2: id
-        // })
-        // if (this.state.selectedItem1 === this.state.selectedItem2) {
-        //     console.log("correct answer")
-        // }
-       
     }
 
     notMatch = () => {
@@ -91,22 +82,24 @@ class Game extends Component {
     render(){
 
     const mappedDeck = this.state.shuffledDeck.map(item => {
-        console.log(this.state.selectedItem1)
-        console.log(this.state.selectedItem2)
-        //create card component, mappedCard = this.
         return (
-            <div style={{color: 'white'}} key={item.id}>
+            <div className="mapped-item" key={item.id}>
                 <div onClick={() => this.selectCard(item.answerID)}>{item.question}</div>  
-            {/* //when function gets fired in onclick function e.target.key //selected item 1,2, etc. in state // have a counter in state  */}
                 <div onClick={() => this.selectCard(item.answerID)} >{item.answer}</div>
             </div>
         )
     })
     return (
-        <div style={{color: "white"}}>
-            {this.state.time}
+        <div className="mapped-deck-container">
+            <div className="timer-container">
+                <div className="time">{this.state.time} seconds</div>
+            </div>
+            <div className="mapped-deck">
             {this.state.gameStart && mappedDeck}
-            {!this.state.gameStart && <button onClick={this.startGame}>Start Game</button>}
+            </div>
+            <div className="start-button-container">
+            {!this.state.gameStart && <button className='start-game-button' onClick={this.startGame}>Start Game</button>}
+            </div>
         </div>
     )
 }

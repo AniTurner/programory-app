@@ -9,8 +9,10 @@ const DecksDisplay = (props) => {
             <div className="deck-title">Select a deck</div>
             <Deck  deckType={"react"}  history={props.history}/>
             {/* //will route to /game */}
-            <Deck  deckType={"js"} history={props.history}/>
-            {/* <Deck deckType={"css"} selectADeck={props.selectADeck}/> //need to create a css option */}
+            <Deck  deckType={"javascript"} history={props.history}/>
+            <Deck  deckType={"html"} history={props.history}/>
+            <Deck  deckType={"css"} history={props.history}/>
+
         </div>
     )
 }

@@ -1,5 +1,5 @@
 {
-    "js": [
+    "javascript": [
         {
             "question": "DOM",
             "answerID": 1,
@@ -102,6 +102,130 @@
             "answer": "the objects which determine components rendering and behavior",
             "answerID": 10,
             "id": 20
+        }
+    ],
+    "html": [
+        {
+            "question": "What does HTML stand for?",
+            "answerID": 11,
+            "id": 21
+        },
+        {
+            "answer": "Hyper Text Markup Language",
+            "answerID": 11,
+            "id": 22
+        },
+        {
+            "question": "Choose the correct HTML element for the largest heading:",
+            "answerID": 12,
+            "id": 23
+        },
+        {
+            "answer": "<h1></h1>",
+            "answerID": 12,
+            "id": 24
+        },
+        {
+            "question": "What is the correct HTML element for inserting a line break",
+            "answerID": 13,
+            "id": 25
+        },
+        {
+            "answer": "<br>",
+            "answerID": 13,
+            "id": 26
+        },
+        {
+            "question": "How can you make a numbered list?",
+            "answerID": 14,
+            "id": 27
+        },
+        {
+            "answer": "<ol></ol>",
+            "answerID": 14,
+            "id": 28
+        },
+        {
+            "question": "How can you make a bulleted list?",
+            "answerID": 15,
+            "id": 29
+        },
+        {
+            "answer": "<ul></ul>",
+            "answerID": 15,
+            "id": 30
+        },
+        {
+            "question": "In HTML, which attribute is used to specify that an input field must be filled out?",
+            "answerID": 16,
+            "id": 31
+        },
+        {
+            "answer": "required",
+            "answerID": 16,
+            "id": 32
+        }
+    ],
+    "css": [
+        {
+            "question": "What does CSS stand for?",
+            "answerID": 17,
+            "id": 33
+        },
+        {
+            "answer": "Creative Style Sheets",
+            "answerID": 17,
+            "id": 34
+        },
+        {
+            "question": "What is the correct HTML for referring to an external style sheet?",
+            "answerID": 18,
+            "id": 35
+        },
+        {
+            "answer": "<link rel='stylesheet' type='text/css' href='mystyle.css'",
+            "answerID": 18,
+            "id": 36
+        },
+        {
+            "question": "Where in an HTML document is the correct place to refer to an external style sheet?",
+            "answerID": 19,
+            "id": 37
+        },
+        {
+            "answer": "in the <head> section",
+            "answerID": 19,
+            "id": 38
+        },
+        {
+            "question": "Which HTML tag is used to define an internal style sheet?",
+            "answerID": 20,
+            "id": 39
+        },
+        {
+            "answer": "<style>",
+            "answerID": 20,
+            "id": 40
+        },
+        {
+            "question": "How do you insert a comment in a CSS file?",
+            "answerID": 21,
+            "id": 41
+        },
+        {
+            "answer": "/* this is a comment */",
+            "answerID": 21,
+            "id": 42
+        },
+        {
+            "question": "Which CSS property is used to change the text color of an element?",
+            "answerID": 22,
+            "id": 43
+        },
+        {
+            "answer": "color",
+            "answerID": 22,
+            "id": 44
         }
     ]
 }

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {js, react} from '../cards.json'
+import {javascript, react, html, css} from '../cards.json'
 
 const GameContext = React.createContext()
 
@@ -21,9 +21,19 @@ class GameProvider extends Component {
                 deckToPlay: this.state.currentDeck.react
             })
         }
-        if(deck === 'js') {
+        if(deck === 'javascript') {
             this.setState({
-                deckToPlay: this.state.currentDeck.js
+                deckToPlay: this.state.currentDeck.javascript
+            })
+        }
+        if(deck === 'html') {
+            this.setState({
+                deckToPlay: this.state.currentDeck.html
+            })
+        }
+        if(deck === 'css') {
+            this.setState({
+                deckToPlay: this.state.currentDeck.css
             })
         }
     }
@@ -37,11 +47,25 @@ class GameProvider extends Component {
                 currentDeck: react
             }, () => history.push(`/${username}/game`))
         }
-        if(deckName === 'js') {
-            this.getDeck("js")
+        if(deckName === 'javascript') {
+            this.getDeck("javascript")
             this.setState({
-                playerSelectDeck: "js",
-                currentDeck: js
+                playerSelectDeck: "javascript",
+                currentDeck: javascript
+            }, () => history.push(`/${username}/game`))
+        }
+        if(deckName === 'html') {
+            this.getDeck("html")
+            this.setState({
+                playerSelectDeck: "html",
+                currentDeck: html
+            }, () => history.push(`/${username}/game`))
+        }
+        if(deckName === 'css') {
+            this.getDeck("css")
+            this.setState({
+                playerSelectDeck: "css",
+                currentDeck: css
             }, () => history.push(`/${username}/game`))
         }
     }
