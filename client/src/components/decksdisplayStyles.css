@@ -104,12 +104,22 @@ html, body {
     color: white;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto auto;
     grid-gap: 40px;
-    height: 130px;
+    /* height: 130px; */
+    cursor: pointer;
+    margin: 10px;
+    border: 1px solid blue
+}
+
+.mapped-item div {
+    
+
+    /* margin: 20px; */
 
 }
 
-.mapped-item {
+.question-box, .answer-box {
     height: 200px;
     width: auto;
     border: 1px solid red;
@@ -117,7 +127,9 @@ html, body {
     text-align: center;
     font-family: 'Special Elite', cursive;
     font-size: 20px;
-
+    cursor: pointer;
+    background-color: white;
+    color: black;
 
 }
 

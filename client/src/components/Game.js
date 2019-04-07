@@ -84,8 +84,8 @@ class Game extends Component {
     const mappedDeck = this.state.shuffledDeck.map(item => {
         return (
             <div className="mapped-item" key={item.id}>
-                <div onClick={() => this.selectCard(item.answerID)}>{item.question}</div>  
-                <div onClick={() => this.selectCard(item.answerID)} >{item.answer}</div>
+                <div className="question-box" onClick={() => this.selectCard(item.answerID)}>{item.question}</div>  
+                <div className="answer-box" onClick={() => this.selectCard(item.answerID)} >{item.answer}</div>
             </div>
         )
     })
@@ -94,6 +94,7 @@ class Game extends Component {
             <div className="timer-container">
                 <div className="time">{this.state.time} seconds</div>
             </div>
+            <div className='arrow bounce'></div>
             <div className="mapped-deck">
             {this.state.gameStart && mappedDeck}
             </div>
