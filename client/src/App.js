@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {Switch, Route, withRouter, Redirect} from 'react-router-dom'
 import DecksDisplay from './components/DecksDisplay.js'
 import Game from './components/Game.js'
+import AfterGame from './components/AfterGame.js'
 import {withData} from './context/DataProvider.js'
 import ProtectedRoute from './components/ProtectedRoute'
 
@@ -52,7 +53,9 @@ class App extends Component {
                 <ProtectedRoute 
                     path='/:_username/game' 
                     render={Game} />
-
+                <ProtectedRoute
+                    path='/:_username/aftergame' 
+                    render={AfterGame} />        
                     {/* //if they go on /game without having gone to decksdisplay, they get redirected to decksdisplay */}
                 <ProtectedRoute 
                     path='/:_username/userinfo' 

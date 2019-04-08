@@ -38,6 +38,7 @@ userRouter.post('/', (req, res, next) => {
 })
 
 userRouter.put('/', (req, res, next) => {
+    console.log(req.body)
     User.findOneAndUpdate({_id: req.user._id}, req.body, {new: true}, (err, updatedUser) => {
         if(err) {
             res.status(500)

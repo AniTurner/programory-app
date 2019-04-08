@@ -9,7 +9,8 @@ class GameProvider extends Component {
         this.state = {
            currentDeck: [],
            playerSelectDeck: '',
-           deckToPlay: []
+           deckToPlay: [],
+           isWiggled: false
 
         }
     }

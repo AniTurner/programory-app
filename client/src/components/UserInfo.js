@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { withData } from '../context/DataProvider.js'
+import {withGame} from '../context/GameProvider.js'
 import { TimelineLite } from 'gsap'
 import {storage} from '../firebase'
 import '../styles-userinfo.css'
@@ -13,29 +14,16 @@ class UserInfo extends Component {
             username: props.user.username,
             nickname: props.user.nickname,
             image: null,
-            userImg: '',
+            userImg: "",
             progress: 0,
             isUploading: false,
-            besttime: 0
+  
         }
 
         this.modalElement = null
         this.tl = new TimelineLite({ paused: true })
     }
 
-    // toggleModal = () => {
-    //     const { modalToggle } = this.state
-    //     if (!modalToggle) {
-    //         this.tl.to(this.modalElement, 0.3, { autoAlpha: 1 })
-    //             .to(this.modalElement, 0.5, { top: 50, scale: 1 }, "-=0.3")
-    //             .play()
-    //     } else {
-    //         this.tl.to(this.modalElement, 0.3, { autoAlpha: 0 })
-    //             .to(this.modalElement, 0.5, { top: 0, scale: 0.75 }, "-=0.3")
-    //             .play()
-    //     }
-    //     this.setState(pervState => ({ modalToggle: !pervState.modalToggle }))
-    // }
 
     handleChange = e => {
         if(e.target.files[0]) {
@@ -58,15 +46,14 @@ class UserInfo extends Component {
 
     handleSubmit = e => {
         e.preventDefault()
-        const {username, nickname, userImg, besttime:{react, javascript}} = this.state
+        const {username, nickname,} = this.state
         const userUpdate = {
             username,
-            nickname,
-            userImg,
-            besttime:{react, javascript}
+            nickname
+            
         }
 
-        this.props.updateUser(this.props.user._id , userUpdate)
+        this.props.updateUser(userUpdate)
 
     }
     handleUpload = () => {
@@ -86,8 +73,7 @@ class UserInfo extends Component {
     }
 
     render() {
-        const {username, userImg, nickname, besttime} = this.state
-console.log(besttime)
+        const {username, userImg, nickname} = this.state
         return (
             <main>
                 <div id="user-info-edit-screen" className="center-crop">
@@ -123,7 +109,7 @@ console.log(besttime)
                             <label className='input-label'>Nickname:<br/>
                             <input type="text" name="nickname" value={nickname ? nickname : ""} placeholder="Nickname" onChange={this.handleSaveChange} />
                             </label>
-                            <p id='highscore'>Best Time: {besttime}</p>
+                            <p id='highscore'>Best Time: {this.props.time}</p>
                        
                         <div id="save-button-container">
                             <button id="save-button">Save</button>

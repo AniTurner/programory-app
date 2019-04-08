@@ -258,40 +258,6 @@ button:first-of-type {
   
 }
 
-/* #login-screen {
-    min-height: 100%;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 100%;
-    grid-gap: 20px;
-    width: 440px;
-} */
-
-/* #login-screen h1 {
-    font: bolder 98px 'Montserrat';
-    margin: 0;
-    background-size: contain;
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-    letter-spacing: 8px;
-    margin: 40px 0;
-    border: 1px solid yellow;
-} */
-
-/* #login-screen .tab {
-    background-color: black;
-    border: none;
-    margin-right: 1px;
-    -webkit-border-top-left-radius: 5px;
-    -webkit-border-top-right-radius: 5px;
-    -moz-border-radius-topleft: 5px;
-    -moz-border-radius-topright: 5px;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    cursor: pointer;
-} */
-
 .tab {
     border: none;
     -webkit-border-top-left-radius: 15px;
@@ -353,6 +319,57 @@ button:first-of-type {
 
 
 
+.wiggle {
+    -webkit-animation-name: wiggle;
+    -webkit-animation-duration: 400ms;
+    -webkit-animation-count: 1;
+    -webkit-animation-function: ease-in-out;
+}
+
+@keyframes wiggle {
+    30% {
+      transform: rotate( -5deg);
+    }
+    60% {
+      transform: rotate( 5deg);
+    }
+    100% {
+      transform: rotate( 0deg);
+    }
+  }
+
+  .spin {
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: 1s;
+    animation-timing-function: linear; 
+  }
+
+  @keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+.swal-modal{
+    background-color: rgb(255, 255, 255);
+    
+}
+.swal-title {
+    font-family: 'Special Elite', cursive;
+}
+
+.swal-text {
+    font-family: 'Special Elite', cursive;
+
+}
+.swal-button {
+    background-color: #3BA6F8;
+    cursor: pointer;
+    
+}
 
 
 
