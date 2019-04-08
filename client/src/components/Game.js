@@ -18,7 +18,6 @@ class Game extends Component {
             selectedItem1: '',
             selectedItem2: '',
             shuffledDeck: [],
-            time: 0,
             gameStart: false,
             selectedItem1Text: ''
         }
@@ -59,10 +58,7 @@ class Game extends Component {
         } else if (!this.state.selectedItem2) {
             if(questiontext !== this.state.selectedItem1Text && answertext !== this.state.selectedItem1Text) {
                 this.setState({selectedItem2: answerID}, () => {
-                    console.log(this.state.selectedItem1)
-                    console.log(this.state.selectedItem2)
-                    console.log({selectedItem1: answerID})
-                    console.log({selectedItem2: answerID})
+                   
                 if (this.state.selectedItem1 && this.state.selectedItem2) {
                         if (this.state.selectedItem1 === this.state.selectedItem2) {
                             this.matchItems(answerID)
@@ -100,7 +96,7 @@ class Game extends Component {
     }
 
     gameEnd = () => {
-        swal("Good job!", `Your time is ${this.state.time} seconds !`, "success");
+        swal("Good job!", `Your time is ${this.props.time} seconds !`, "success");
 
     }
 
@@ -114,7 +110,7 @@ class Game extends Component {
     }
 
     startGame = () => {
-        this.clockId = setInterval(() => this.setState(p => ({ time: p.time + 1})), 1000)
+        this.clockId = setInterval(() => this.props.incrementTime(), 1000)
         this.setState({
             gameStart: true
         })

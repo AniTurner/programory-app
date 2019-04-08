@@ -17,7 +17,7 @@ class DataProvider extends Component {
             user: JSON.parse(localStorage.getItem("user")) || {},
             token: localStorage.getItem("token") || "",
             newUsername: '',
-            allUsers: []
+            allUsers: [],
         }
     }
 

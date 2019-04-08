@@ -10,7 +10,8 @@ class GameProvider extends Component {
            currentDeck: [],
            playerSelectDeck: '',
            deckToPlay: [],
-           isWiggled: false
+           isWiggled: false,
+           time: 0
 
         }
     }
@@ -71,6 +72,11 @@ class GameProvider extends Component {
         }
     }
 
+    incrementTime = () => {
+        this.setState(p => {
+           time: p.time += 1
+        })
+    }
     
 
     render() {
@@ -79,7 +85,8 @@ class GameProvider extends Component {
                 value={{
                     ...this.state,
                     selectADeck: this.selectADeck,
-                    getDeck: this.getDeck
+                    getDeck: this.getDeck,
+                    incrementTime: this.incrementTime
                 }}>
                 {this.props.children}
             </GameContext.Provider>
