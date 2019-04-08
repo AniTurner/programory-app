@@ -18,12 +18,6 @@ class LoginSignup extends Component {
         })
     }
 
-    // toggler = () => {
-    //     this.setState(prevState => ({
-    //         authToggle: !prevState.authToggle
-    //     }))
-    // }
-
     render() {
        
         return (

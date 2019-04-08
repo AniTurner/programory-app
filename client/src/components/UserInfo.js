@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { withData } from '../context/DataProvider.js'
-import {withGame} from '../context/GameProvider.js'
 import { TimelineLite } from 'gsap'
 import {storage} from '../firebase'
 import '../styles-userinfo.css'

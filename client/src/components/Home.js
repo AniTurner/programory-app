@@ -3,8 +3,6 @@ import { withData } from '../context/DataProvider.js'
 import LoginSignup from './LoginSignup.js'
 import {withGame} from '../context/GameProvider.js'
 
-// import { PageFade } from '../transitions/transition.js'
-
 import './homeStyles.css'
 
 class Home extends Component {
