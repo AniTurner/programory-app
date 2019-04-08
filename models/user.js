@@ -19,10 +19,7 @@ const userSchema = new Schema({
     },
     userImg: String,
     nickname: String,
-    besttime: {
-        react: Number,
-        js: Number
-    }
+    besttime: Number
 })
 
 //User AUTH methods

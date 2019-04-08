@@ -21,6 +21,10 @@ body {
     min-height: 70vh;
 }
 
+
+.main-title {
+   
+}
 article {
     min-height: 100%;
     display: grid;
@@ -36,7 +40,7 @@ a {
 }
 
 a:hover {
-    color: #d71d02;
+    color: #0222d7;
 }
 
 
@@ -83,9 +87,8 @@ header {
     MENU / NAV ELEMENTS
 */
 
-#admin-nav {
+#nav {
     display: flex;
-    background-color: #c2b2b217;
     list-style: none;
     flex-direction: row;
     font-size: 12pt;
@@ -96,36 +99,46 @@ header {
 
 
 
-#admin-nav .title {
+#nav .title {
     text-transform: uppercase;
-    color: #0d14d1;
-    font-family: 'Source Code Pro', monospace;
-    font-size: 25px;
+    color: yellow;
+    font-family: 'Wallpoet', cursive;
+    font-size: 30px;
+    
 }
 
-#admin-nav li {
+#nav .title:hover {
+    color: yellow;
+    color: #FF1177;
+}
+
+#nav li {
     border: 5px solid transparent;
     font-size: 13pt;
-    /* display: grid; */
+    display: grid;
 }
 
-#admin-nav li a {
+#nav li a {
     color: whitesmoke;
     text-decoration: none;
     transition: all 0.3s ease;
+    font-family: 'Special Elite', cursive;
+    display: grid;
+    text-align: baseline;
+
 }
 
-#admin-nav li a:hover {
+#nav li a:hover {
     transition: all 0.3s ease;
-    color: #e9d750;
+    color: blue;
     -webkit-animation-name: wiggle;
-    -ms-animation-name: wiggle;
-    -ms-animation-duration: 1000ms;
-    -webkit-animation-duration: 1000ms;
-    -webkit-animation-iteration-count: 1;
-    -ms-animation-iteration-count: 1;
-    -webkit-animation-timing-function: ease-in-out;
-    -ms-animation-timing-function: ease-in-out;
+  -ms-animation-name: wiggle;
+  -ms-animation-duration: 1000ms;
+  -webkit-animation-duration: 1000ms;
+  -webkit-animation-iteration-count: 1;
+  -ms-animation-iteration-count: 1;
+  -webkit-animation-timing-function: ease-in-out;
+  -ms-animation-timing-function: ease-in-out;
 }
 
 @-webkit-keyframes wiggle {
@@ -135,24 +148,24 @@ header {
     75% {-webkit-transform: rotate(-5deg);}
     100% {-webkit-transform: rotate(0deg);}
   }
+  
+  @-ms-keyframes wiggle {
+    0% {-ms-transform: rotate(1deg);}
+    25% {-ms-transform: rotate(-1deg);}
+    50% {-ms-transform: rotate(1.5deg);}
+    75% {-ms-transform: rotate(-5deg);}
+    100% {-ms-transform: rotate(0deg);}
+  }
+  
+  @keyframes wiggle {
+    0% {transform: rotate(10deg);}
+    25% {transform: rotate(-10deg);}
+    50% {transform: rotate(20deg);}
+    75% {transform: rotate(-5deg);}
+    100% {transform: rotate(0deg);}
+  }
 
-@-ms-keyframes wiggle {
-  0% {-ms-transform: rotate(1deg);}
-  25% {-ms-transform: rotate(-1deg);}
-  50% {-ms-transform: rotate(1.5deg);}
-  75% {-ms-transform: rotate(-5deg);}
-  100% {-ms-transform: rotate(0deg);}
-}
-
-@keyframes wiggle {
-  0% {transform: rotate(10deg);}
-  25% {transform: rotate(-10deg);}
-  50% {transform: rotate(20deg);}
-  75% {transform: rotate(-5deg);}
-  100% {transform: rotate(0deg);}
-}
-
-#admin-nav li {
+#nav li {
     letter-spacing: 3pt;
     border: 15px solid transparent;
 }
@@ -234,16 +247,17 @@ button:first-of-type {
     background-position: center;
     transition: all 0.5s ease-in-out;
     text-align: center;
-    /* background: url("https://source.unsplash.com/collection/2569191/800x600") center no-repeat; */
     background-size: cover;
 }
 
 #welcome-screen h1 {
-    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-    color: white;
-    font-size: 15vw;
-    letter-spacing: 10px;
-    text-shadow:0px 0px 5px #000000;
+    text-transform: uppercase;
+    color: yellow;
+    font-family: 'Wallpoet', cursive;
+    font-size: 80px;
+    display: grid;
+    text-align: center;
+  
 }
 
 #login-screen {
@@ -304,20 +318,11 @@ button:first-of-type {
     clear: none;
 }
 
-#categories-screen {
-    min-height: 100%;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 100%;
-    grid-gap: 20px;
-    width: 440px;
-}
-
 
 #user-info-edit-screen img {
     width: 250px;
     height: 250px;
-    float: left;
+    /* float: left; */
     border-radius: 200px;
     margin: 40px 0 0 40px;
 }
@@ -325,15 +330,11 @@ button:first-of-type {
 #user-info-form {
     display: grid;
     grid-template-columns: auto auto 1fr;
-    /* grid-template-rows: 100%; */
+    grid-template-rows: 100%;
     grid-gap: 20px;
 }
 
-/* #user-info-form > div {
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-gap: 20px;
-} */
+
 
 #user-info-form input {
     width: 335px;
@@ -344,54 +345,13 @@ button:first-of-type {
     display: flex;
 }
 
-/* #user-info-form button {
-    height: 40px;
-    align-self: center;
-    border-radius: 15px;
-} */
 
-#progress-bar {
-    display: flex;
-    color: white;
-    border: 1px solid white;
-    border-radius: 5px;
-    margin-left: 80px;
-}
 
-input[type="file"] {
-    display: none;
-}
 
-.custom-file-upload {
-    background-color: rgb(18, 60, 199);
-    border: 1px solid silver;
-    color: rgb(197, 228, 237);
-    font-size: 1em;
-    padding: 10px 10px;
-    width: 150px;
-    font-weight: normal;
-    margin-left: 20px;
-    cursor: pointer;
-    font-family: 'Special Elite', cursive;
-    text-align: center;
-    border-radius: 15px;
-    margin: 10px;
 
-}
 
-.custom-file-upload:hover {
-    -webkit-box-shadow: 0px 0px 46px -4px rgba(245,240,245,1);
-    -moz-box-shadow: 0px 0px 46px -4px rgba(245,240,245,1);
-    box-shadow: 0px 0px 46px -4px rgba(245,240,245,1);
-}
 
-.input-label {
-    color: rgb(197, 228, 237);
-    padding: 10px;
-    font-family: 'Special Elite', cursive;
-    height: 100px;
-    
-}
+
 
 
 

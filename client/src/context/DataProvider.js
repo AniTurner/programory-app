@@ -39,7 +39,6 @@ class DataProvider extends Component {
         return axios.post('/auth/login', credentials).then(res => {
             const {token, user} = res.data
             localStorage.setItem("token", token)
-            console.log(user)
             localStorage.setItem('user', JSON.stringify(user))
             this.setState({
                 user,
@@ -74,14 +73,16 @@ class DataProvider extends Component {
             }))
         })
     }
+
+    
     // update user
     updateUser = (updates) => {
         console.log(updates)
-        dataAxios.put(`/api/user`, updates).then(res => {
+        dataAxios.put('/api/user', updates).then(res => {
             localStorage.user = JSON.stringify(res.data)
-            this.setState(prevState => ({
+            this.setState({
                 user: res.data
-            }))
+            })
         })
     }
 
@@ -98,6 +99,7 @@ class DataProvider extends Component {
     
 
     render() {
+        console.log(this.state.newUsername)
         return (
             <DataContext.Provider
                 value={{
@@ -107,7 +109,6 @@ class DataProvider extends Component {
                     logout: this.logout,
                     getUser: this.getUser,
                     getUsers: this.getUsers,
-                    getCategories: this.getCategories,
                     addUser: this.addUser,
                     newUsername: this.state.newUsername,
                     allUsers: this.state.allUsers,

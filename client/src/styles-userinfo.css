@@ -8,7 +8,8 @@
     flex-direction: column;
     align-items: center;
     position: absolute;
-    transform: scale(0.5)
+    transform: scale(0.5);
+    border: 1px solid yellow
 }
 
 #user-info-edit-screen {
@@ -17,12 +18,13 @@
     -moz-box-shadow: inset 0px 0px 15px 2px rgba(0,0,0,0.75);
     box-shadow: inset 0px 0px 15px 2px rgba(0,0,0,0.75);
     border-top: none;
+    
 }
 
 h1 {
     color: white;
     font-size: 20pt;
-    margin-left: 120px;
+    /* margin-left: 120px; */
     padding-top: 20px;
     font-family: 'Special Elite', cursive;
 }
@@ -34,7 +36,23 @@ input {
 }
 
 #upload-button {
-    background-color: rgb(18, 60, 199);
+    background-color: rgba(18, 60, 199, 0.349);
+    border: 1px solid silver;
+    color: rgb(197, 228, 237);
+    font-size: 1em;
+    padding: 7px 7px;
+    width: 130px;
+    font-weight: normal;
+    margin-left: 20px;
+    cursor: pointer;
+    font-family: 'Special Elite', cursive;
+    text-align: center;
+    border-radius: 15px;
+    margin: 10px;
+}
+
+.custom-file-upload {
+    background-color: rgba(18, 60, 199, 0.349);
     border: 1px solid silver;
     color: rgb(197, 228, 237);
     font-size: 1em;
@@ -47,5 +65,63 @@ input {
     text-align: center;
     border-radius: 15px;
     margin: 10px;
+
 }
 
+.custom-file-upload:hover {
+    -webkit-box-shadow: 0px 0px 46px -4px rgba(245,240,245,1);
+    -moz-box-shadow: 0px 0px 46px -4px rgba(245,240,245,1);
+    box-shadow: 0px 0px 46px -4px rgba(245,240,245,1);
+}
+
+#button-container {
+    padding: 10px;
+    margin-left: 10px;
+}
+
+#save-button-container {
+    display: flex;
+    grid-column-start: 2;
+    justify-content: flex-end;
+}
+
+#save-button {
+    border-radius: 15px;
+   
+}
+
+#progress-bar {
+    display: flex;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-left: 80px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+input {
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.input-label {
+    color: rgb(197, 228, 237);
+    font-family: 'Special Elite', cursive;
+    height: 100px;
+    display: grid;
+
+    
+}
+
+#highscore {
+    color: white;
+    font-family: 'Special Elite', cursive;
+    margin-bottom: 20px;
+}
+
+main{
+    height: 87vh;
+}

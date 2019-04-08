@@ -14,26 +14,28 @@ class UserInfo extends Component {
             nickname: props.user.nickname,
             image: null,
             userImg: '',
-            progress: 0
+            progress: 0,
+            isUploading: false,
+            besttime: 0
         }
 
         this.modalElement = null
         this.tl = new TimelineLite({ paused: true })
     }
 
-    toggleModal = () => {
-        const { modalToggle } = this.state
-        if (!modalToggle) {
-            this.tl.to(this.modalElement, 0.3, { autoAlpha: 1 })
-                .to(this.modalElement, 0.5, { top: 50, scale: 1 }, "-=0.3")
-                .play()
-        } else {
-            this.tl.to(this.modalElement, 0.3, { autoAlpha: 0 })
-                .to(this.modalElement, 0.5, { top: 0, scale: 0.75 }, "-=0.3")
-                .play()
-        }
-        this.setState(pervState => ({ modalToggle: !pervState.modalToggle }))
-    }
+    // toggleModal = () => {
+    //     const { modalToggle } = this.state
+    //     if (!modalToggle) {
+    //         this.tl.to(this.modalElement, 0.3, { autoAlpha: 1 })
+    //             .to(this.modalElement, 0.5, { top: 50, scale: 1 }, "-=0.3")
+    //             .play()
+    //     } else {
+    //         this.tl.to(this.modalElement, 0.3, { autoAlpha: 0 })
+    //             .to(this.modalElement, 0.5, { top: 0, scale: 0.75 }, "-=0.3")
+    //             .play()
+    //     }
+    //     this.setState(pervState => ({ modalToggle: !pervState.modalToggle }))
+    // }
 
     handleChange = e => {
         if(e.target.files[0]) {
@@ -48,17 +50,23 @@ class UserInfo extends Component {
         })
     }
 
+    toggleUploading = (value) => {
+        this.setState({
+            isUploading: value
+        })
+    }
+
     handleSubmit = e => {
         e.preventDefault()
-        const {username, nickname, userImg} = this.state
+        const {username, nickname, userImg, besttime:{react, javascript}} = this.state
         const userUpdate = {
             username,
             nickname,
             userImg,
+            besttime:{react, javascript}
         }
 
         this.props.updateUser(this.props.user._id , userUpdate)
-        console.log('hi')
 
     }
     handleUpload = () => {
@@ -78,21 +86,12 @@ class UserInfo extends Component {
     }
 
     render() {
-        // const style = {
-        //     height: '100vh',
-        //     display: 'fex',
-        //     flexDirection: 'column',
-        //     alignItems: 'center',
-        //     justifyContent: 'center'
-        // }
-        const {username, userImg, nickname} = this.state
-
+        const {username, userImg, nickname, besttime} = this.state
+console.log(besttime)
         return (
             <main>
                 <div id="user-info-edit-screen" className="center-crop">
 
-                    {/* <h2>Me</h2> */}
-                    {/* <hr /> */}
                     <h1>Hi {`${nickname}`} !</h1>
 
                     <form id="user-info-form" onSubmit={this.handleSubmit}>
@@ -104,19 +103,18 @@ class UserInfo extends Component {
                             :
                             <progress id="progress-bar" value={this.state.progress} max="100" />}
                             <br/>
+                            <div id="button-container">
                             <label className='custom-file-upload'>Select Image
                             <input
-                                id="choosefile-button"
                                 size= '160px'
                                 type="file" 
                                 name="userImg" 
                                 value={userImg} 
-                                placeholder="Profile Image URL" 
-                                onChange={this.handleChange}
+                                onChange={ this.handleChange}
                                 ref={fileInput => this.fileInput = fileInput} />
                             </label>
-                            <button id="upload-button" onClick={this.handleUpload}>Upload</button>
-                            <br/>
+                            <button id="upload-button" onClick={this.handleUpload}>Upload Image</button>
+                            </div>
                         </div>
                         <div>
                             <label className='input-label'>Username:<br/>
@@ -125,17 +123,14 @@ class UserInfo extends Component {
                             <label className='input-label'>Nickname:<br/>
                             <input type="text" name="nickname" value={nickname ? nickname : ""} placeholder="Nickname" onChange={this.handleSaveChange} />
                             </label>
+                            <p id='highscore'>Best Time: {besttime}</p>
+                       
+                        <div id="save-button-container">
+                            <button id="save-button">Save</button>
                         </div>
-                        <div>
-                            <button>Save</button>
                         </div>
 
                     </form>
-
-                    <div ref={div => this.modalElement = div} className="modal">
-                        <p>Your Update has been saved</p>
-                        <button onClick={this.toggleModal}>Close</button>
-                    </div>
 
                 </div>
             </main>

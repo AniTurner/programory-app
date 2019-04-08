@@ -11,7 +11,7 @@ import Footer from './components/Footer.js'
 import Home from './components/Home.js'
 import UserInfo from './components/UserInfo.js'
 // import './components/styles.css'
-import './components/decksdisplayStyles.css'
+import './decksdisplayStyles.css'
 import './components/homeStyles.css'
 
 
@@ -22,9 +22,9 @@ class App extends Component {
     constructor(props) {
         super(props) 
     }
-    componentDidMount = () => {
-        this.props.token && this.props.getUsers()
-    }
+    // componentDidMount = () => {
+    //     this.props.token && this.props.getUsers()
+    // }
 
     
 
@@ -52,6 +52,8 @@ class App extends Component {
                 <ProtectedRoute 
                     path='/:_username/game' 
                     render={Game} />
+
+                    {/* //if they go on /game without having gone to decksdisplay, they get redirected to decksdisplay */}
                 <ProtectedRoute 
                     path='/:_username/userinfo' 
                     render={UserInfo} />

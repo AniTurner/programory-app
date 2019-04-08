@@ -15,13 +15,24 @@ class Game extends Component {
         this.clockId = null
     }
 
+    // When routed to decks, it immediately scrolls to the bottom for start button
+
+    messagesEnd = React.createRef()
+
+
+    scrollToBottom = () => {
+        this.messagesEnd.current.scrollIntoView({ behavior: 'smooth' })
+      }
+
     componentDidMount(){
+        this.scrollToBottom();
         const shuffledDeck = shuffle(this.props.currentDeck)
         this.setState({
             shuffledDeck
         })
        
     }
+      
 
     selectCard = answerID => {
         if(!this.state.selectedItem1) {
@@ -84,23 +95,27 @@ class Game extends Component {
     const mappedDeck = this.state.shuffledDeck.map(item => {
         return (
             <div className="mapped-item" key={item.id}>
-                <div className="question-box" onClick={() => this.selectCard(item.answerID)}>{item.question}</div>  
-                <div className="answer-box" onClick={() => this.selectCard(item.answerID)} >{item.answer}</div>
+                <div onClick={() => this.selectCard(item.answerID)}>{item.question}</div>  
+                <div onClick={() => this.selectCard(item.answerID)} >{item.answer}</div>
             </div>
         )
     })
     return (
+
         <div className="mapped-deck-container">
             <div className="timer-container">
                 <div className="time">{this.state.time} seconds</div>
             </div>
-            <div className='arrow bounce'></div>
             <div className="mapped-deck">
             {this.state.gameStart && mappedDeck}
             </div>
             <div className="start-button-container">
-            {!this.state.gameStart && <button className='start-game-button' onClick={this.startGame}>Start Game</button>}
+            {!this.state.gameStart
+            &&
+           <> <button className='start-game-button' onClick={this.startGame}>Start Game</button>
+            <div ref={this.messagesEnd} /> </>}
             </div>
+            
         </div>
     )
 }
