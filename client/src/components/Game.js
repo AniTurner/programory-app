@@ -2,11 +2,13 @@ import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import swal from 'sweetalert';
 import Sound from 'react-sound';
+import sound from './music.mp3'
 
 import {withData} from '../context/DataProvider.js'
 
 import {withGame} from '../context/GameProvider.js'
 const shuffle = require('lodash.shuffle');
+
 
 
 class Game extends Component {
@@ -145,14 +147,12 @@ class Game extends Component {
                 <div ref={this.messagesEnd} /> 
             </>}
             </div>
-            {this.swal
+            {this.state.gameStart
             &&
             <Sound
-                url='https://www.youtube.com/watch?v=ChdpflTAvok'
+                url={sound}
                 playStatus={Sound.status.PLAYING}
-                playFromPosition={300 /* in milliseconds */}
                 onPlaying={this.handleSongPlaying}
-                onLoading={this.handleSongLoading}
                 onFinishedPlaying={this.handleSongFinishedPlaying}
             />
             }
