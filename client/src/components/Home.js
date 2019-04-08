@@ -1,16 +1,24 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { withData } from '../context/DataProvider.js'
 import LoginSignup from './LoginSignup.js'
+import {withGame} from '../context/GameProvider.js'
+
 // import { PageFade } from '../transitions/transition.js'
 
 import './homeStyles.css'
 
-const Home = () => {
+class Home extends Component {
+    constructor(props) {
+        super(props) 
+      
+    }
+
+    render() {
     return (
         <div id="welcome-screen">
             <div className="outer-div">
             <h1>Programory</h1>
-            <p className="description">Welcome! </p>
+            {this.props.token && <p className="description" style={{color: 'white'}}>Welcome! </p>}
 
             <div className="inner-div"></div>
             </div>
@@ -26,6 +34,7 @@ const Home = () => {
         </div>
     )
 }
+}
 
 
-export default withData(Home)
+export default withData(withGame(Home))

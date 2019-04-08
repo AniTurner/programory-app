@@ -10,7 +10,7 @@ import Nav from './components/Nav.js'
 import Footer from './components/Footer.js'
 import Home from './components/Home.js'
 import UserInfo from './components/UserInfo.js'
-// import './components/styles.css'
+
 import './decksdisplayStyles.css'
 import './components/homeStyles.css'
 
