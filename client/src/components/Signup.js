@@ -68,15 +68,15 @@ class Signup extends Component {
                     name="nickname"
                     onChange={this.handleChange}
                     value={this.state.nickname}
-                    placeholder="Nickname"
+                    placeholder="nickname"
                 />
 
 
 
-                <button>Signup</button>
+                <button id='login-button'>Signup</button>
                 
                 {this.state.errorMessage && <p style={{ color: "red" }}>{this.state.errorMessage}</p>}
-                <p onClick={this.toggler}>Already have an account? Login</p>
+                {/* <p onClick={this.toggler}>Already have an account? Login</p> */}
 
 
             </form>

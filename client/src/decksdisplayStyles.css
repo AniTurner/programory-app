@@ -93,7 +93,7 @@ html, body {
     color: white;
     display: grid;
     grid-template-rows: 1fr 1fr 1fr;
-    height: 130vh;
+    height: 87vh;
 }
 
 
@@ -111,7 +111,7 @@ html, body {
     grid-row-start: 1;
     justify-items: right;
     align-items: right;
-    height: 100px;
+    height: 60px;
     color: black;
 }
 
@@ -140,7 +140,9 @@ html, body {
     grid-gap: 40px;
     cursor: pointer;
     font-family: 'Special Elite', cursive;
-    margin: 60px;
+    margin-left: 60px;
+    margin-right: 60px;
+
    
 
 }
@@ -148,18 +150,19 @@ html, body {
 .mapped-item {
     cursor: pointer;
     background-color: white;
-    color: black;
+    color: white;
     width: auto;
     height: 200px;
     text-align: center;
     vertical-align: middle;
     text-align: center;
     padding: 10px;
-    padding-top: 50px;
+    padding-top: 30px;
     font-family: 'Special Elite', cursive;
     font-size: 20px;
     border-radius: 15px;
-    border-top: 20px solid blue;
+    background: rgb(5,94,238);
+    background: linear-gradient(0deg, rgba(5,94,238,0.80015756302521) 0%, rgba(32,37,52,1) 100%)
     
 }
 
@@ -172,5 +175,9 @@ html, body {
     transition: all 0.3s ease-in-out 0s;
 }
 
+.mapped-item div {
+    font-family: 'Special Elite', cursive;
+
+}
 
 

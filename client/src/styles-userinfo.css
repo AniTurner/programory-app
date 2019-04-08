@@ -21,10 +21,10 @@
     
 }
 
-h1 {
+#user-info-edit-screen h1 {
     color: white;
     font-size: 20pt;
-    /* margin-left: 120px; */
+    margin-left: 120px;
     padding-top: 20px;
     font-family: 'Special Elite', cursive;
 }

@@ -21,10 +21,6 @@ body {
     min-height: 70vh;
 }
 
-
-.main-title {
-   
-}
 article {
     min-height: 100%;
     display: grid;
@@ -58,7 +54,7 @@ a:hover {
 
 .vertical-align-parent {
     position: relative;
-    height: 70vh;
+    height: 30vh;
 }
 
 .vertical-align-child {
@@ -68,11 +64,13 @@ a:hover {
     left: 50%;
     transform: translateY(-50%);
     transform: translateX(-50%);
-    background-color: white;
-    /* width: 400px; */
-    /* height: 100px; */
-    /* display: flex; */
-    /* justify-content: center; */
+    background-color: rgba(5, 5, 5, 0.671);
+    border-radius: 15px;
+    height: 250px;
+    -webkit-box-shadow: 0px 0px 81px -15px rgba(13,82,246,1);
+    -moz-box-shadow: 0px 0px 81px -15px rgba(13,82,246,1);
+    box-shadow: 0px 0px 81px -15px rgba(13,82,246,1);
+    padding: 30px;
 }
 
 /* 
@@ -207,9 +205,22 @@ button {
     font-family: 'Special Elite', cursive;
     padding: 10px 10px;
     width: 150px;
-    /* text-transform: uppercase; */
     font-weight: normal;
     margin-left: 20px;
+}
+#login-button{
+    background-color: rgb(18, 60, 199);
+    border: 1px solid silver;
+    color: rgb(197, 228, 237);
+    font-size: 1em;
+    font-family: 'Special Elite', cursive;
+    padding: 10px 10px;
+    width: 150px;
+    font-weight: normal;
+    margin-left: 20px;
+    border-radius: 15px;
+    display: grid;
+    justify-self: center;
 }
 
 button:hover {
@@ -221,19 +232,6 @@ button:hover {
 button:first-of-type {
     margin-left: 0px;
 }
-
-/* .close-button {
-    width: 20px;
-    background: url('./gfx/close-button.png');
-    background-size: cover;
-    background-repeat: none;
-    background-position: center;
-    height: 20px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-} */
 
 .add-form .close-button {
     display: none;
@@ -260,28 +258,28 @@ button:first-of-type {
   
 }
 
-#login-screen {
+/* #login-screen {
     min-height: 100%;
     display: grid;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 100%;
     grid-gap: 20px;
     width: 440px;
-}
+} */
 
-#login-screen h1 {
+/* #login-screen h1 {
     font: bolder 98px 'Montserrat';
     margin: 0;
-    /* background: url("https://source.unsplash.com/collection/2569191/800x600") center; */
     background-size: contain;
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
     letter-spacing: 8px;
     margin: 40px 0;
-}
+    border: 1px solid yellow;
+} */
 
-#login-screen .tab {
+/* #login-screen .tab {
     background-color: black;
     border: none;
     margin-right: 1px;
@@ -292,17 +290,29 @@ button:first-of-type {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     cursor: pointer;
+} */
+
+.tab {
+    border: none;
+    -webkit-border-top-left-radius: 15px;
+    -webkit-border-top-right-radius: 15px;
+    -moz-border-radius-topleft: 15px;
+    -moz-border-radius-topright: 15px;
+    outline: none;
 }
 
-#login-screen .tab:hover {
-    background-color: rgb(0, 106, 102);
+.tab:hover {
+    background-color: #3BA6F8;
+    color: black;
+    cursor: pointer;
 }
 
 .login-form {
     width: 440px;
-    display: block;
     margin: 0;
     float: left;
+    display: grid;
+    justify-content: center;
 }
 
 .login-form input {
@@ -310,12 +320,7 @@ button:first-of-type {
     float: left;
     clear: both;
     margin-bottom: 10px;
-}
-
-.login-form button {
-    position: relative;
-    float: left;
-    clear: none;
+    width: 300px;
 }
 
 

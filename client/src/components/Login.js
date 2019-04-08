@@ -44,7 +44,7 @@ class Login extends Component {
 
     render(){
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className="login-form" onSubmit={this.handleSubmit}>
 
                     <input 
                         type="text"
@@ -62,10 +62,10 @@ class Login extends Component {
                         placeholder="password"
                     />
 
-                    <button>Login</button>
+                    <button id='login-button'>Login</button>
                     
                     {this.state.errorMessage && <p style={{color: "red"}}>{this.state.errorMessage}</p>}
-                    <p onClick={this.toggler}>Don't have an account? Sign Up</p>
+                    {/* <p onClick={this.toggler}>Don't have an account? Sign Up</p> */}
 
 
             </form>

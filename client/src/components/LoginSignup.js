@@ -18,11 +18,11 @@ class LoginSignup extends Component {
         })
     }
 
-    toggler = () => {
-        this.setState(prevState => ({
-            authToggle: !prevState.authToggle
-        }))
-    }
+    // toggler = () => {
+    //     this.setState(prevState => ({
+    //         authToggle: !prevState.authToggle
+    //     }))
+    // }
 
     render() {
        
@@ -33,8 +33,7 @@ class LoginSignup extends Component {
                     <span><button className="tab" onClick={() => this.setUserChoice('login')}>Login</button></span>
                     <span><button className="tab" onClick={() => this.setUserChoice('signup')}>Sign Up</button></span>
                     {/* DISPLAY DIV ONLY IF USERS EXIST */}
-                    {/* {(this.state.userChoice === 'signup')  */}
-                    {this.state.authToggle
+                    {(this.state.userChoice === 'signup') 
                     ?
                     <div>
                         <Signup />
