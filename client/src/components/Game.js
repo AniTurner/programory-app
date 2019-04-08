@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import swal from 'sweetalert';
+import Sound from 'react-sound';
 
 import {withData} from '../context/DataProvider.js'
 
@@ -97,7 +98,7 @@ class Game extends Component {
     }
 
     gameEnd = () => {
-        swal("Good job!", `Your best time is ${this.state.time} seconds !`, "success");
+        swal("Good job!", `Your time is ${this.state.time} seconds !`, "success");
 
     }
 
@@ -144,7 +145,18 @@ class Game extends Component {
                 <div ref={this.messagesEnd} /> 
             </>}
             </div>
-            {/* {!this.state.shuffledDeck.length && 
+            {this.swal
+            &&
+            <Sound
+                url='https://www.youtube.com/watch?v=ChdpflTAvok'
+                playStatus={Sound.status.PLAYING}
+                playFromPosition={300 /* in milliseconds */}
+                onPlaying={this.handleSongPlaying}
+                onLoading={this.handleSongLoading}
+                onFinishedPlaying={this.handleSongFinishedPlaying}
+            />
+            }
+            {/* {this.gameEnd &&
             <Redirect 
                 to={`/${this.props.user.username}/decksdisplay`} 
             />}  */}
