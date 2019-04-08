@@ -14,7 +14,7 @@ app.use(morgan('dev'))
 app.use(express.static(path.join(__dirname, "client", "build")))
 
 //data base connect
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/programory', {useNewUrlParser: true}, () => {
+mongoose.connect(process.env.MONGOLAB_IVORY_URI || 'mongodb://localhost:27017/programory', {useNewUrlParser: true}, () => {
     console.log("[+] Connected to the DB")
 })
 
