@@ -11,8 +11,19 @@ class GameProvider extends Component {
            playerSelectDeck: '',
            deckToPlay: [],
            isWiggled: false,
-           time: 0
+           time: 0,
+           bestTime: ''
 
+        }
+    }
+
+    updateScore = () => {
+        if(this.state.bestTime > this.state.time ) {
+        const {time} = this.props
+        const userUpdate = {
+            time
+        }
+        this.props.updateUser(userUpdate)
         }
     }
 
@@ -73,9 +84,9 @@ class GameProvider extends Component {
     }
 
     incrementTime = () => {
-        this.setState(p => {
+        this.setState(p => ({
            time: p.time += 1
-        })
+        }))
     }
     
 

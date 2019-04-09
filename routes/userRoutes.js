@@ -49,7 +49,6 @@ userRouter.put('/', (req, res, next) => {
 })
 
 
-
 //Delete one
 userRouter.delete('/:_id', (req, res) => {
     User.findOneAndRemove({_id: req.params._id}, (err, deletedUser) => {

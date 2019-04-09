@@ -96,6 +96,7 @@ class Game extends Component {
     }
 
     gameEnd = () => {
+        this.bestScore()
         swal("Good job!", `Your time is ${this.props.time} seconds !`, "success");
 
     }
@@ -110,6 +111,7 @@ class Game extends Component {
     }
 
     startGame = () => {
+        console.log(this.props.incrementTime)
         this.clockId = setInterval(() => this.props.incrementTime(), 1000)
         this.setState({
             gameStart: true
@@ -130,7 +132,7 @@ class Game extends Component {
 
         <div className="mapped-deck-container">
             <div className="timer-container">
-                <div className="time">{this.state.time} seconds</div>
+                <div className="time">{this.props.time} seconds</div>
             </div>
             <div className="mapped-deck">
             {this.state.gameStart && mappedDeck}

@@ -56,6 +56,9 @@ class UserInfo extends Component {
         this.props.updateUser(userUpdate)
 
     }
+
+    
+
     handleUpload = () => {
         const {image} = this.state
         const uploadTask = storage.ref(`images/${image.name}`).put(image)
